@@ -87,7 +87,8 @@ class Response
         {
             throw new \UnexpectedValueException('Response string is empty.');
         }
-        $xml = new SimpleXML($xml);
+        $xml = new SimpleXML($xml, LIBXML_PARSEHUGE);
+
         $fault = $xml->children('soap', true)->Body->Fault;
         if ($fault)
         {
